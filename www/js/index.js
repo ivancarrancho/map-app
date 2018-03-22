@@ -22,7 +22,6 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
     }
 };
 
@@ -63,27 +62,21 @@ $(".coordinates_form").submit(function(e) {
         var total_z = 0;
         var a = 0;
         var b = 1;
-        console.log(y_arr.length)
         for (var i = x_arr.length; i > 1; i--) {
             total_x = (x_arr[a] * y_arr[b]) + total_x
-            console.log('multx ' + x_arr[a] * y_arr[b] + ' ' + a + ' ' + b);
             a++;
             b++;
         }
         total_x = (x_arr[a] * y_arr[0]) + total_x
-        console.log('multx ' + x_arr[a] * y_arr[0] + ' ' + a + ' ' + 0);
 
         a = 1;
         b = 0;
         for (var i = y_arr.length; i > 1; i--) {
             total_y = (x_arr[a] * y_arr[b]) + total_y
-            console.log('multy ' + x_arr[a] * y_arr[b] + ' ' + a + ' ' + b);
             a++;
             b++;
         }
         total_y = (x_arr[0] * y_arr[b]) + total_y
-        console.log('multy ' + x_arr[0] * y_arr[b] + ' ' + 0 + ' ' + b + ' ' + x_arr[0] +' '+' '+ y_arr[b]);
-        console.log(total_x + ' ' + total_y)
         total_z = (total_x - total_y) / 2
         $('.hide').removeClass('hide');
         $('.result').text(total_z + ' Kms 2').removeClass('hide');
